@@ -1915,6 +1915,11 @@ private:
     template <typename, typename> friend class GenericValue;
     template <typename, typename, typename> friend class GenericDocument;
 
+    #ifdef _MSC_VER
+        #pragma warning(push)
+        #pragma warning(disable : 5054)
+    #endif
+
     enum {
         kBoolFlag       = 0x0008,
         kNumberFlag     = 0x0010,
@@ -1945,6 +1950,10 @@ private:
 
         kTypeMask = 0x07
     };
+
+    #ifdef _MSC_VER
+        #pragma warning(pop)
+    #endif
 
     static const SizeType kDefaultArrayCapacity = 16;
     static const SizeType kDefaultObjectCapacity = 16;
